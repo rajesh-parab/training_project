@@ -1,0 +1,22 @@
+version: 0.0 
+os: linux
+files:
+  - source: /
+    destination: /opt/tomcat/apache-tomee-plus-1.7.1/webapps/codedeploy/
+  - source: vpa-saas-app/target/vpa-saas-app.war
+    destination: /opt/tomcat/apache-tomee-plus-1.7.1/webapps/
+permissions:
+  - object: /opt/tomcat/apache-tomee-plus-1.7.1/webapps/codedeploy/
+    pattern: "**"              
+    owner: root
+    group: root
+    mode: 755
+    type:
+      - file
+hooks:
+  BeforeInstall:
+    - location: Scripts/shutdown.sh
+      runas: root
+  AfterInstall:
+    - location: Scripts/startup.sh
+      runas: root

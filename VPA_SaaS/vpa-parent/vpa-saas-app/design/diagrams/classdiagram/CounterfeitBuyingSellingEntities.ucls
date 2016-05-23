@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.vpa.saas.controllers.ConterfeitEntityController" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/controllers/ConterfeitEntityController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="286" width="583" x="758" y="37"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.vpa.saas.dto.CounterfeitBuyingSellingEntityDTO" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/dto/CounterfeitBuyingSellingEntityDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="970" width="340" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.vpa.saas.services.impl.CounterfeitEntityServiceImpl" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/services/impl/CounterfeitEntityServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="250" width="514" x="1794" y="37"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="com.vpa.saas.services.CounterfeitEntityService" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/services/CounterfeitEntityService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="447" x="1071" y="662"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="com.vpa.saas.formatters.CurrencyFormatter" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/formatters/CurrencyFormatter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1544" y="105"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.vpa.saas.forms.CounterfeitEntityForm" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/forms/CounterfeitEntityForm.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="538" width="198" x="421" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.vpa.saas.converter.impl.CounterfeitEntityConverterImpl" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/converter/impl/CounterfeitEntityConverterImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="267" width="329" x="2712" y="45"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="com.vpa.saas.converter.CounterfeitEntityConverter" project="vpa-saas-app" 
+    file="/vpa-saas-app/src/main/java/com/vpa/saas/converter/CounterfeitEntityConverter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="106" width="432" x="2510" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.vpa.core.bo.CounterfeitEntityBO" project="vpa-core-app" 
+    file="/vpa-core-app/src/main/java/com/vpa/core/bo/CounterfeitEntityBO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="359" width="198" x="1488" y="255"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.vpa.core.dws.dao.impl.DimCompanyDaoImpl" project="vpa-core-app" 
+    file="/vpa-core-app/src/main/java/com/vpa/core/dao/dws/impl/DimCompanyDaoImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="436" width="296" x="2389" y="41"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="com.vpa.core.dws.dao.DimCompanyDao" project="vpa-core-app" 
+    file="/vpa-core-app/src/main/java/com/vpa/core/dws/dao/DimCompanyDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2084" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <realization id="12">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <association id="13">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="14" name="counterfeitEntityConverter"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <realization id="17">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="18">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="19" name="dimCompanyDao"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="22" name="counterfeitEntityService"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

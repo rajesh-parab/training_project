@@ -1,0 +1,51 @@
+package com.vpa.saas.services.geocoding;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.google.code.geocoder.Geocoder;
+import com.google.code.geocoder.GeocoderRequestBuilder;
+import com.google.code.geocoder.model.GeocodeResponse;
+import com.google.code.geocoder.model.GeocoderRequest;
+import com.google.code.geocoder.model.GeocoderResult;
+import com.google.code.geocoder.model.GeocoderResultType;
+import com.google.code.geocoder.model.LatLng;
+ 
+public class GoogleMapReverseGeoCodingTest {
+
+	@Test
+	public void countryIsoCode() throws IOException {
+		/*GoogleMapReverseGeoCoding googleMapReverseGeoCoding=new GoogleMapReverseGeoCoding(); 
+		String country=googleMapReverseGeoCoding.getLocation("20.527537", "-103.464706");
+		assertEquals("MX",country);*/
+		
+		  String country="";
+		  GeocoderRequest geocoderRequest;
+	        GeocodeResponse geocoderResponse;
+		 Geocoder geocoder = new Geocoder();
+		   
+      System.out.println(Geocoder.getGeocoderHost()); 
+
+	   
+		
+		 geocoderRequest = new GeocoderRequestBuilder().setLocation(new LatLng("20.527537", "-103.464706")).setLanguage("en").getGeocoderRequest();
+		 geocoderResponse = geocoder.geocode(geocoderRequest); 
+		 
+		 List<GeocoderResult> results= geocoderResponse.getResults();
+		 for(GeocoderResult result : results){
+			 List<String> types = result.getTypes();
+			 for(String type : types){
+				 if(GeocoderResultType.COUNTRY.value().equals(type)){
+					 country=result.getAddressComponents().get(0).getShortName();
+					 break;
+				 }
+				  
+			 }
+			
+		 }
+		 System.out.println(country);
+	}
+
+}

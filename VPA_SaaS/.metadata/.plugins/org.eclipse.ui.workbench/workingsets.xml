@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1437491234427_0" label="authentication" name="authentication">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/vpa-saas-app" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/vpa-parent" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/vpa-core-app" type="4"/>
+</workingSet>
+</workingSetManager>

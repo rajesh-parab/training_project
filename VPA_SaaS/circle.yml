@@ -1,0 +1,18 @@
+machine:
+  java:
+    version: oraclejdk7
+general:
+  build_dir: /vpa-parent
+dependencies:
+  override:
+    - mvn --fail-never dependency:go-offline || true
+database:
+  override:
+    - echo "no database setup today 27-08-2015 10:03  am"
+deployment:
+  staging:
+    branch: development
+    codedeploy:
+      vpa-saas-app-test:
+        deployment_group: vpa-saas-app-test-env
+  

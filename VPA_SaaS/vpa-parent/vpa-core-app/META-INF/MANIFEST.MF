@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: vpa-core-app
+Bundle-SymbolicName: vpa-core-app
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.vpa.core,
+ com.vpa.core.commons,
+ com.vpa.core.dws.dao,
+ com.vpa.core.dws.models,
+ com.vpa.core.enums,
+ com.vpa.core.exceptions,
+ com.vpa.core.mes.dao,
+ com.vpa.core.mes.dao.dws.impl,
+ com.vpa.core.mes.dao.impl,
+ com.vpa.core.models,
+ com.vpa.core.services,
+ com.vpa.core.services.impl,
+ com.vpa.core.utils
+

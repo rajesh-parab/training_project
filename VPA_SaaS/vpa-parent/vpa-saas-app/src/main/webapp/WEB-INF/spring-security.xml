@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd ">
+
+	<!-- This is default url to get a token from OAuth -->
+	<http pattern="/oauth/token" create-session="stateless"
+		authentication-manager-ref="clientAuthenticationManager"
+		xmlns="http://www.springframework.org/schema/security">
+		<intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_FULLY" />
+		<anonymous enabled="false" />
+		<http-basic entry-point-ref="clientAuthenticationEntryPoint" />
+		<!-- include this only if you need to authenticate clients via request 
+			parameters -->
+		<custom-filter ref="clientCredentialsTokenEndpointFilter"
+			after="BASIC_AUTH_FILTER" />
+		<access-denied-handler ref="oauthAccessDeniedHandler" />
+	</http>
+
+	<!-- This is where we tells spring security what URL should be protected 
+		and what roles have access to them -->
+	<http pattern="/**" create-session="never"
+		entry-point-ref="oauthAuthenticationEntryPoint"
+		access-decision-manager-ref="accessDecisionManager"
+		xmlns="http://www.springframework.org/schema/security" use-expressions="true">
+		<anonymous enabled="false" />
+		
+		<!-- REST API URL Accessed by Dash board user -->
+		<!-- <intercept-url pattern="/entity/**" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" requires-channel="https"/> -->
+		<intercept-url pattern="/entity/**" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')"/>
+		<intercept-url pattern="/user /brandowner/login" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/tenant/all" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/dashboard/authentication/kpi" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/dashboard/authentication/regions" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/product" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/brand/" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/dashboard/unprotected" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/dashboard/compromised" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/dashboard/authentication/flag/count/*" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/authentication/live/details/*" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/auth//totalAuth" access="hasAnyRole('ROLE_BRANDOWNER_USER','ROLE_ADMIN')" />		
+		
+		<!-- REST API URL Accessed by Mobile phone user -->
+		<intercept-url pattern="/product/**" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/user/business/register" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/user/business/activate/" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/user/business/login" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/business/password/forgot" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/business/password/reset" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/user/token/regenerate/" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/product/scan/verify" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/product/scan/genuine" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/product/scan/suspect" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/product/scan/" access="hasAnyRole('ROLE_BUSINESS_USER','ROLE_ADMIN')" />
+		
+		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<access-denied-handler ref="oauthAccessDeniedHandler" />
+	</http>
+
+	<bean id="oauthAuthenticationEntryPoint"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
+		<property name="realmName" value="vpa" />
+	</bean>
+
+	<bean id="clientAuthenticationEntryPoint"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
+		<property name="realmName" value="vpa/client" />
+		<property name="typeName" value="Basic" />
+	</bean>
+
+	<bean id="oauthAccessDeniedHandler"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
+
+	<bean id="clientCredentialsTokenEndpointFilter"
+		class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+		<property name="authenticationManager" ref="clientAuthenticationManager" />
+	</bean>
+
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased"
+		xmlns="http://www.springframework.org/schema/beans">
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.oauth2.provider.vote.ScopeVoter" />
+				<bean class="org.springframework.security.web.access.expression.WebExpressionVoter" />
+				<bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<authentication-manager id="clientAuthenticationManager"
+		xmlns="http://www.springframework.org/schema/security">
+		<authentication-provider user-service-ref="clientDetailsUserService" />
+	</authentication-manager>
+
+	
+	
+	<!-- Authentication manager fetching  users credentials from DB -->	
+	<authentication-manager alias="authenticationManager"
+		xmlns="http://www.springframework.org/schema/security">
+		<authentication-provider user-service-ref="restAuthenticationService" >
+		<!-- To do -->
+		<!-- <password-encoder hash="sha">
+			<sec:salt-source user-property="username"/>
+		</password-encoder> -->
+		</authentication-provider>
+	</authentication-manager>
+	
+	<bean id="restAuthenticationService" class="com.vpa.saas.oauth2.CustomUserDetailsService"/>
+
+	<bean id="clientDetailsUserService"
+		class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
+		<constructor-arg ref="clientDetails" />
+	</bean>
+
+
+	<!-- This defined token store, we have used inmemory tokenstore for now 
+		but this can be changed to a user defined one -->
+	<bean id="tokenStore"
+		class="org.springframework.security.oauth2.provider.token.InMemoryTokenStore" />
+
+	<bean id="tokenEnhancer" class="com.vpa.saas.oauth2.VPATokenEnhancer">
+		<property name="additionInformationForAuthorities">
+			<list>
+				<value>ROLE_BUSINESS_USER</value>
+				<value>ROLE_BRANDOWNER_USER</value>
+				<value>ROLE_ADMIN</value>
+				<!-- <value>ROLE_CLIENT_APP</value> -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- This is where we defined token based configurations, token validity 
+		and other things -->
+	<bean id="tokenServices"
+		class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
+		<property name="tokenStore" ref="tokenStore" />
+		<property name="supportRefreshToken" value="true" />
+		<!-- <property name="accessTokenValiditySeconds" value="30" /> -->
+		<property name="clientDetailsService" ref="clientDetails" />
+		<property name="tokenEnhancer" ref="tokenEnhancer"/>
+	</bean>
+
+	<bean id="userApprovalHandler"
+		class="org.springframework.security.oauth2.provider.approval.TokenServicesUserApprovalHandler">
+		<property name="tokenServices" ref="tokenServices" />
+	</bean>
+
+	<oauth:authorization-server
+		client-details-service-ref="clientDetails" token-services-ref="tokenServices"
+		user-approval-handler-ref="userApprovalHandler">
+		<oauth:authorization-code />
+		<oauth:implicit />
+		<oauth:refresh-token />
+		<oauth:client-credentials />
+		<oauth:password />
+	</oauth:authorization-server>
+
+	<oauth:resource-server id="resourceServerFilter"
+		resource-id="vpa" token-services-ref="tokenServices" />
+
+	<oauth:client-details-service id="clientDetails">
+		<!-- client for brandowner user who access dash board-->
+		<oauth:client client-id="brandowneruser"
+			authorized-grant-types="authorization_code,client_credentials,password,refresh_token,implicit"
+			authorities="ROLE_BRANDOWNER_USER" scope="read,write,trust" secret="f90453ec712ce4505cc425e7e881e1d58ea274c3"
+			access-token-validity="15"
+			refresh-token-validity="12000000" />
+		<!-- client for business user who access mobile phone app-->			 
+		<oauth:client client-id="businessuser"
+			authorized-grant-types="authorization_code,client_credentials,password,refresh_token,implicit"
+			authorities="ROLE_BUSINESS_USER" scope="read,write,trust" secret="f6e4d85d4e29cabbcdaf093da41f41a1a59d296e"
+			access-token-validity="15"
+			refresh-token-validity="15" />
+		<!-- client for client applications like mobile app and WebUI application who access SaaS rest API-->			 			 
+		<oauth:client client-id="clientapp"
+			authorized-grant-types="authorization_code,client_credentials,password,refresh_token,implicit"
+			authorities="ROLE_CLIENT_APP" scope="read,write,trust" secret="59c886a950fea10b17be1d9f1f213b06bdb11761"
+			access-token-validity="15"
+			refresh-token-validity="12000000" />
+		<!-- client for VPA admin who has access of all-->			 			 			
+		<oauth:client client-id="vpaadmin"
+			authorized-grant-types="authorization_code,client_credentials,password,refresh_token,implicit"
+			authorities="ROLE_ADMIN" scope="read,write,trust" secret="9396072bae451c81a12468e87f1181bacbacba69"
+			access-token-validity="15"
+			refresh-token-validity="12000000" />
+	</oauth:client-details-service>
+
+	<sec:global-method-security
+		pre-post-annotations="enabled" proxy-target-class="true">
+		<sec:expression-handler ref="oauthExpressionHandler" />
+	</sec:global-method-security>
+
+	<oauth:expression-handler id="oauthExpressionHandler" />
+	<oauth:web-expression-handler id="oauthWebExpressionHandler" />
+	
+	
+</beans>

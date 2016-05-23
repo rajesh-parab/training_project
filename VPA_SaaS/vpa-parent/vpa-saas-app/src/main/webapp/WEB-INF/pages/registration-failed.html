@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Vantage Point Analytics</title>
+<link rel="stylesheet" href="../../../user/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../resources/css/font.css">
+<link rel="stylesheet" href="../../../resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../resources/css/style.css">
+</head>
+<body>
+<div class="wrapper_login">
+  <div class="bl_login_tbl">
+    <div class="bl_login_cell">
+      <div class="bl_login">
+        <div class="logo"><img src="../../../resources/imgs/vpa-logo-login.png" alt=""></div>
+        <hr>
+        <h2>Account verification</h2>
+        <div class="bl_white bl_white_ws mb20">
+          <p>This verification link is no longer valid. Please enter your email address so we can resend the email verification link.</p>
+          <p id="response"></p>
+          <form id="frm-email">
+            <label class="lbl_email">Email Address</label>
+            <input type="email" id="fp_email" class="form-control mb20" placeholder="user@company.com" tabindex="1" autofocus>
+            <div class="text-center">
+              <input type="button" class="btn btn-vpa" value="Send" tabindex="3" onclick="sendToken()">
+            </div>
+          </form>
+          <hr>
+          <p class="text-center">Are you here by mistake?<br>Let’s get you back on track.</p>
+          <button class="btn btn-vpa btn-vpa-big w100p" onClick="document.location.href='http://www.vantagepointanalytics.com'">Learn More About<br> Vantage Point Analytics</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../../resources/js/jquery-1.11.2.js"></script> 
+<script src="../../../resources/js/bootstrap.min.js"></script> 
+<script src="../../../resources/js/common.js"></script>
+<script>
+function validateEmail(sEmail) {
+	var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	if (filter.test(sEmail)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
+function sendToken() {
+	
+	var email=$('#fp_email').val();
+	if(email == ''){
+        $('#response').text("Please check your email address");
+        $('#response').addClass('errors');
+        $('#frm-email label, #fp_email').addClass('error');
+        return false;
+    }
+	else if(! validateEmail(email)){
+        $('#response').text("Email is invalid.");
+        $('#response').addClass('errors');
+        $('#frm-email label, #fp_email').addClass('error');
+        return false;
+    }else{
+		$.ajax({
+			  url: "http://localhost:8080/vpa-saas-app/user/token/regenerate/" + email +"/",
+			  success: function(res){
+				  console.log(JSON.stringify(res));
+				  if(res != null){
+					  	$('#response').text(res.message);
+						if(res.notification == 'SUCCESS'){
+							$('#response').addClass('success');
+						}else if(res.notification == 'FAILED'){
+							$('#response').addClass('errors');
+						}
+					 }
+			  }
+			});
+    }
+	
+	}
+</script>
+</body>
+</html>

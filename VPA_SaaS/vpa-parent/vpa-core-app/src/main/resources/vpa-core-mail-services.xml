@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+
+
+
+	<!-- DO NOT EVER CHANGE THE dev (${vpa.saas.profile:dev}) SETTING BELOW -->
+	<context:property-placeholder
+		location="classpath:vpa_saas_email_${vpa.saas.profile:dev}.properties" />
+
+
+	<bean id="emailSender" class="com.vpa.core.services.impl.EmailSenderImpl">
+		<property name="host" value="${mail.host}" />
+		<property name="port" value="${mail.port}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+		<property name="transportprotocol" value="${mail.transportprotocol}" />
+		<property name="smtpAuth" value="${mail.smtpAuth}" />
+		<property name="starttlsEnable" value="${mail.starttlsEnable}" />
+		<property name="starttlsRequired" value="${mail.starttlsRequired}" />
+		<property name="from" value="${mail.from}" />
+		<property name="subject" value="${mail.subject}" />
+		<property name="htmlEmailMessage" value="${mail.htmlEmailMessage}" />
+		<property name="htmlEmailMessageType" value="${mail.htmlEmailMessageType}" />
+		<property name="multipleUser" value="${mail.multipleUser}" />
+	</bean>
+
+
+	 
+	
+ 
+</beans>

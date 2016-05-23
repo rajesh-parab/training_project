@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Vantage Point Analytics</title>
+<link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../resources/css/font.css">
+<link rel="stylesheet" href="../../../resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../resources/css/style.css">
+</head>
+<body>
+<script>
+function openApp() {
+	var timeout;
+	//alert(window.navigator.userAgent);
+	if (window.navigator.userAgent.indexOf('iPhone') != -1) {
+		    timeout = setTimeout(function() {open_appstore()},300);
+			window.location = "VPAMobile://VPAAppPOC";
+      } else {
+                alert("Not an iPhone!");
+                document.location = 'http://www.vantagepointanalytics.com';
+        };
+        function open_appstore() {
+        	alert("App not Installed");
+            window.location='http://www.vantagepointanalytics.com';
+        }
+	}
+</script>
+
+<div class="wrapper_login">
+  <div class="bl_login_tbl">
+    <div class="bl_login_cell">
+      <div class="bl_login">
+        <div class="logo"><img src="../../../resources/imgs/vpa-logo-login.png" alt=""></div>
+        <hr>
+        <h2>Account verification</h2>
+        <div class="bl_white bl_white_ws mb20">
+          <p class="big_icon"><span class="fa fa-check-circle"></span></p>
+          <p class="success_msg">You are all set!</p>
+          <p class="success_info">Your email address has been verified.</p>
+         <!--  <div class="text-center">
+            <input type="submit" class="btn btn-vpa-small" value="Open Application" onclick="openApp()">
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../../resources/js/jquery-1.11.2.js"></script> 
+<script src="../../../resources/js/bootstrap.min.js"></script> 
+<script src="../../../resources/js/common.js"></script>
+</body>
+</html>

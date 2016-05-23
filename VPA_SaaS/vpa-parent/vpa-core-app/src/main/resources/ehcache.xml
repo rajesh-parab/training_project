@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<diskStore path="/home/vpa/cache_" />
+	<defaultCache eternal="false" maxElementsInMemory="1000"
+		overflowToDisk="true" diskPersistent="true" timeToLiveSeconds="300" />
+
+	<cache name="vpaSaasCache" maxElementsInMemory="500"
+		eternal="false" overflowToDisk="false" timeToIdleSeconds="120"
+		timeToLiveSeconds="120000" />
+</ehcache>
