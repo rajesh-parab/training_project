@@ -1,0 +1,29 @@
+package lesson1;
+
+import java.util.ArrayList;
+
+public class Price {
+
+	ArrayList<String> names = new ArrayList<>();
+
+	public static void main(String[] args) {
+		Price names = new Price();
+		names.searchName();
+		names.searchNameBetterWay();
+
+	}
+
+	public void searchNameBetterWay() {
+
+		System.out.println("Found Rajesh?:" + names.contains("Rajesh"));
+	}
+
+	public void searchName() {
+		BigDecimal totalOfDiscountedPrices = BigDecimal.ZERO;
+		for (BigDecimal price : prices) {
+			if (price.compareTo(BigDecimal.valueOf(20)) > 0)
+				totalOfDiscountedPrices = totalOfDiscountedPrices.add(price.multiply(BigDecimal.valueOf(0.9)));
+		}
+		System.out.println("Total of discounted prices: " + totalOfDiscountedPrices);
+	}
+}

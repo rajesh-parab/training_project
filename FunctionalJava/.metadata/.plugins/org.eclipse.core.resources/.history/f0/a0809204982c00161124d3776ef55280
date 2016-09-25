@@ -1,0 +1,13 @@
+package lesson1;
+
+public abstract class sds {
+
+	public static void main(String[] args) {
+		boolean found = false;
+		report erratum  •  discusswww.it-ebooks.info
+		for(String city : cities) { if(city.equals("Chicago")) { found = true; break; } }
+		System.out.println("Found chicago?:" + found); 
+
+	}
+
+}

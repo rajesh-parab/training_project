@@ -1,0 +1,22 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Names {
+
+	ArrayList<String> names = new ArrayList<>();
+
+	public static void main(String[] args) {
+
+		Collections.sort(inventory, new Comparator<Apple>() {
+			public int compare(Apple a1, Apple a2) {
+				return a1.getWeight().compareTo(a2.getWeight());
+			}
+		});
+
+	}
+
+}

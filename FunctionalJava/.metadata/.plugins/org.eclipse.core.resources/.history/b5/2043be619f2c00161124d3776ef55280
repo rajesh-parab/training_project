@@ -1,0 +1,22 @@
+package lesson1;
+
+public class Apple {
+	
+	Integer weight;
+	Integer price;
+	public Apple(Integer weight, Integer price) {
+		super();
+		this.weight = weight;
+		this.price = price;
+	}
+	public int getWeight() {
+		return weight;
+	}
+	public int getPrice() {
+		return price;
+	}
+	 
+	
+	
+
+}

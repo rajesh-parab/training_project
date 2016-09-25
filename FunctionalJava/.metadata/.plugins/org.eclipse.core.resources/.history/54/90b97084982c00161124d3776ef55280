@@ -1,0 +1,23 @@
+package lesson1;
+
+import java.util.ArrayList;
+
+public class Names {
+	public static void main(String[] args) {
+		searchName(); 
+		searchNameBetterWay();
+
+	}
+
+	private static void searchName() {
+		boolean found = false;
+		 ArrayList <String> names = new ArrayList<>();
+		 names.add("Sandesh");
+		 names.add("Rajesh");
+		 names.add("Akhilesh");
+		 
+		 
+		for(String name : names) { if(name.equals("Rajesh")) { found = true; break; } }
+		System.out.println("Found Rajesh?:" + found);
+	}
+}

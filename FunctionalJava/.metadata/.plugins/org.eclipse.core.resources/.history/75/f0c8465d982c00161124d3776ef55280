@@ -1,0 +1,14 @@
+package lesson1;
+
+import java.util.ArrayList;
+
+public class Names {
+	public static void main(String[] args) {
+		boolean found = false;
+		 ArrayList <String> names = new ArrayList<>();
+		 
+		for(String name : names) { if(name.equals("Rajesh")) { found = true; break; } }
+		System.out.println("Found Rajesh?:" + found); 
+
+	}
+}

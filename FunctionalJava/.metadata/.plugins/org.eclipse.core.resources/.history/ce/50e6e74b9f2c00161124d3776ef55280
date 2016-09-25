@@ -1,0 +1,16 @@
+package lesson1;
+
+public class Apple {
+	
+	int weight;
+	int price;
+	public Apple(int weight, int price) {
+		super();
+		this.weight = weight;
+		this.price = price;
+	}
+	 
+	
+	
+
+}

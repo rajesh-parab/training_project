@@ -1,0 +1,47 @@
+package lesson1;
+
+import java.util.ArrayList;
+import java.util.function.Consumer;
+
+public class Names {
+
+	ArrayList<String> names = new ArrayList<>();
+
+	public static void main(String[] args) {
+		Names names = new Names();
+		names.searchName();
+		names.searchNameBetterWay();
+		names.forEach();
+
+	}
+
+	public void searchNameBetterWay() {
+
+		System.out.println("Found Rajesh?:" + names.contains("Rajesh"));
+	}
+
+	public void searchName() {
+		boolean found = false;
+
+		names.add("Sandesh");
+		names.add("Rajesh");
+		names.add("Akhilesh");
+
+		for (String name : names) {
+			if (name.equals("Rajesh")) {
+				found = true;
+				break;
+			}
+		}
+		System.out.println("Found Rajesh?:" + found);
+	}
+	//lesson 2
+	We changed just one thing: we traded in the old for loop for the new internal iterator forEach(). As for the benefit, we went from telling it how to iterate to focusing on what we want to do for each element
+	public void forEach() {
+		names.forEach(new Consumer<String>() {
+			public void accept(final String name) {
+				System.out.println(name);
+			}
+		});
+	}
+}

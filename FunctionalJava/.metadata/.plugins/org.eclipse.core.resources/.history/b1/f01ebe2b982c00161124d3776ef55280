@@ -1,0 +1,11 @@
+package lesson1;
+
+public class Names {
+	public static void main(String[] args) {
+		boolean found = false;
+		 ArrayList <String> names = new ArrayList<>();
+		for(String city : cities) { if(city.equals("Chicago")) { found = true; break; } }
+		System.out.println("Found chicago?:" + found); 
+
+	}
+}
