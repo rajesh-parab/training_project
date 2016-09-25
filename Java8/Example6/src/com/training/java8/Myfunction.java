@@ -1,0 +1,7 @@
+package com.training.java8;
+
+import java.util.function.Function;
+@FunctionalInterface 
+public interface Myfunction<T> extends Function<T,String> {
+	  
+}

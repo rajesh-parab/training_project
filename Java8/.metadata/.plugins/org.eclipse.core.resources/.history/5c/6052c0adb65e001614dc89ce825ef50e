@@ -1,0 +1,55 @@
+package com.training.rajesh.stream.grouping;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.training.rajesh.stream.Countries;
+import com.training.rajesh.stream.Country;
+
+public class Grouping {
+
+	@Before
+	public void initStream(){
+		
+	}
+	
+	@Test
+	public void countriesPerContinent(){
+		Map<String, Long> countriesPerContinent = countries.stream().collect(groupingBy(Country::getContinent,counting()));
+		System.out.println(countriesPerContinent);
+	}
+	public static void main(String[] args) {
+		List<Country> countries = Countries.getCountries();
+		Map<String, List<Country>> countriesByContinent = countries.stream().collect(groupingBy(Country::getContinent));
+		System.out.println(countriesByContinent);
+
+		Map<String, List<Country>> countriesByPopulation = countries.stream().collect(groupingBy(country -> {
+			if (country.getPopulation() >= 30000000L)
+				return "higlypopulated";
+			else
+				return "lesspopulated";
+		}));
+		System.out.println(countriesByPopulation);
+		// multi level grouping
+	Map<String,	Map<String, List<Country>>> countriesByContinentAndByPopulation = countries.stream().
+				collect(groupingBy(Country::getContinent,
+						groupingBy(country -> {
+							if (country.getPopulation() >= 30000000L)
+								return "higlypopulated";
+							else
+								return "lesspopulated";
+						})));
+		
+		System.out.println(countriesByContinentAndByPopulation);
+		
+		
+
+	}
+
+}

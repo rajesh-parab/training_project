@@ -1,0 +1,21 @@
+package com.rajesh.lambda.scope;
+
+public class GenericAddition {
+
+	public static void main(String[] args) {
+		//A lambda expression cannot declare type parameters, and therefore, it cannot have a     
+				// target type whose abstract method is generic
+		GenericAdd <Integer>add = (x,y)-> x + y;
+		add.add(50, 40);
+		System.out.println(genericAdd((x,y)-> x + y));
+		System.out.println(genericAddString((x,y)-> x + y));
+
+	}
+	 public static int genericAdd(GenericAdd <Integer>add){
+		 
+		   return   add.add(10,20);
+	   }
+	 public static String genericAddString(GenericAdd<String> add){
+		   return add.add("Hello", " world");
+	   }
+}

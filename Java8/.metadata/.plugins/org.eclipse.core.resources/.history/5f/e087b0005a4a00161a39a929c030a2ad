@@ -1,0 +1,14 @@
+package com.training.java8;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+public class MatchTheFollowing {
+
+	public static void main(String[] args) {
+		Predicate<List<String>> a = 	(List<String> list) -> list.isEmpty();
+		System.out.println(a.test(new ArrayList<String>()));
+
+	
+
+}

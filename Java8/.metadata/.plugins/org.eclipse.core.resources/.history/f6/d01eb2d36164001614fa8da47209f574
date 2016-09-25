@@ -1,0 +1,13 @@
+package com.java8.two;
+
+import com.java8.one.City;
+
+public class CityMHStatePredicate implements CityPredicate {
+
+	@Override
+	public boolean test(City city) {
+
+		return city.getState().equals("MH");
+	}
+
+}

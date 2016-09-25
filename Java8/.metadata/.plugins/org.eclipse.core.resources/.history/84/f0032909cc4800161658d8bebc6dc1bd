@@ -1,0 +1,20 @@
+package com.training.java8;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+public class TestLambda {
+
+	public static void main(String[] args) {
+	Consumer<String> e =	(String i)->  {};  ;
+	Supplier<String> e1 =	()->   "hi" ;  
+	Supplier<String> e2 =	()->  {return "hi";} ;  
+	Function<Integer,String> e3 =	(Integer i)->  {return "hi"+i;} ;  
+	Function<String,String> e4 =	(String s)->     "iorn man";   
+	Command c=()->{};
+	Command c2=()->{ System.out.println(" my command interface");};
+	c2.test();
+	}
+
+}

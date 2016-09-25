@@ -1,0 +1,14 @@
+package com.rajesh.lambda;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class LambdaExamples {
+
+	@Test
+	public void example1() {
+		fail("Not yet implemented");
+	}
+
+}

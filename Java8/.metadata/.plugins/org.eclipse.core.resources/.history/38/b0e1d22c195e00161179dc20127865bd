@@ -1,0 +1,31 @@
+package com.java8.training;
+
+public class AnanymousVSlambda {
+
+	 int i=0;
+	 public static int j=0;
+	 int x=0;
+	 int y=0;
+	 public void ann(){
+		 
+		 new AnnClass(){
+			 int j;
+			@Override
+			public int testMe(int i) {
+				int x;
+				y++;
+				// TODO Auto-generated method stub
+				return 0;
+			}};
+		 
+	 }
+	 public void lambda(){
+		 
+		 
+	 }
+	public static void main(String[] args) {
+		 
+
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.training.java8;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+
+public class MatchTheFollowing {
+
+	public static void main(String[] args) {
+		Predicate<List<String>> a = 	(List<String> list) -> list.isEmpty();
+		System.out.println(a.test(new ArrayList<String>()));
+		//****************
+		Supplier<Student> b = () -> new Student(10);
+		System.out.println(b.get().getAge());
+		//****************
+		 Function<String, Integer> c = (String s) -> s.length();
+		 ToIntFunction<String> d = (String s) -> s.length();
+		 System.out.println(c.apply("hello"));
+
+		 System.out.println(d.applyAsInt("zensar"));
+
+
+	}
+
+	
+
+}

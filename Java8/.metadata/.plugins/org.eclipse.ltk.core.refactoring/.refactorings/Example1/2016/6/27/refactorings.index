@@ -1,0 +1,7 @@
+1467034253876	Rename type 'FilterCity'
+1467034965478	Extract method 'filterCitiesWith50thousandPopulation'
+1467189288849	Rename type 'CityPopulationPredicate'
+1467189304350	Rename type 'CityStatePredicate'
+1467193851996	Rename type 'CityPreidicate2'
+1467194121675	Rename local variable 'cities'
+1467194217433	Rename local variable 'cities'

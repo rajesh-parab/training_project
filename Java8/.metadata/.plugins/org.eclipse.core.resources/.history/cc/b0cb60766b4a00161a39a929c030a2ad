@@ -1,0 +1,9 @@
+package com.training.java8;
+
+public class Student {
+	
+	private int age;
+	
+	
+
+}

@@ -1,0 +1,28 @@
+package com.java8.one;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FilterCity3 {
+
+	public static void main(String[] args) {
+		 List<City> cities = Cities.getCities();
+		 List<City> results = filterCitiesByPopulation(cities,6000000L);
+		 System.out.println(results);
+		 List<City> results2 = filterCitiesByPopulation(cities,3000000L);
+		 System.out.println(results2);
+		 
+	}
+
+	private static List<City> filterCitiesByPopulation(List<City> cities,Long population) {
+		List<City> results =  new ArrayList<>();
+	
+		 for(City c : cities){
+			 if(c.getPopulation().equals(population)){
+				 results.add(c);
+			 }
+		 }
+		return results;
+	}
+
+}

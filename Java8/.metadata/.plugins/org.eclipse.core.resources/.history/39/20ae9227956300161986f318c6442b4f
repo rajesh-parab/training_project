@@ -1,0 +1,15 @@
+package com.rajesh.lambda;
+
+import java.util.function.Supplier;
+
+import org.junit.Test;
+
+public class LambdaExamples {
+
+	@Test
+	public void example1() {
+		
+	Supplier<Integer> s= 	() -> 42;
+	}
+
+}

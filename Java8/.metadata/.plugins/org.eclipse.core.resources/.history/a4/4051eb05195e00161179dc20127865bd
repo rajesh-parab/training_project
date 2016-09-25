@@ -1,0 +1,22 @@
+package com.java8.training;
+
+public class AnanymousVSlambda {
+
+	 int i=0;
+	 public static int j=0;
+	 
+	 public void ann(){
+		 
+		 new AnnClass(){}
+		 
+	 }
+	 public void lambda(){
+		 
+		 
+	 }
+	public static void main(String[] args) {
+		 
+
+	}
+
+}

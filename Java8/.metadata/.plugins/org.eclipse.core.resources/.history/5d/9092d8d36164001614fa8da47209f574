@@ -1,0 +1,13 @@
+package com.java8.two;
+
+import com.java8.one.City;
+
+public class CityPopulation30lakhPredicate  implements CityPredicate {
+
+	@Override
+	public   boolean test(City city) {
+		// TODO Auto-generated method stub
+		return (city.getPopulation()==3000000L);
+	}
+
+}

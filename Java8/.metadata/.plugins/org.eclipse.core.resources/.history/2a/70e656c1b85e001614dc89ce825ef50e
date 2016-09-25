@@ -1,0 +1,75 @@
+package com.training.rajesh.stream.grouping;
+
+import static java.util.Comparator.comparingLong;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.maxBy;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.training.rajesh.stream.Countries;
+import com.training.rajesh.stream.Country;
+
+public class Grouping {
+	static final List<Country> countries = Countries.getCountries();
+	Stream<Country> countryStream;
+	
+	@Before
+	public void initStream(){
+		 
+		 countryStream = countries.stream();
+	}
+	
+	@Test
+	public void countriesPerContinent(){
+		Map<String, Long> countriesPerContinent = countryStream.collect(groupingBy(Country::getContinent,counting()));
+		System.out.println(countriesPerContinent);
+	}
+	@Test
+	public void countriesByContinent(){
+		Map<String, List<Country>> countriesByContinent = countryStream.collect(groupingBy(Country::getContinent));
+		System.out.println(countriesByContinent);
+	}
+	@Test
+	public void countriesByPopulation(){
+		Map<String, List<Country>> countriesByPopulation = countryStream.collect(groupingBy(country -> {
+			if (country.getPopulation() >= 30000000L)
+				return "higlypopulated";
+			else
+				return "lesspopulated";
+		}));
+		System.out.println(countriesByPopulation);
+	}
+	
+	@Test
+	public void countriesByContinentAndByPopulation(){
+		// multi level grouping
+		Map<String,	Map<String, List<Country>>> countriesByContinentAndByPopulation = countryStream.
+					collect(groupingBy(Country::getContinent,
+							groupingBy(country -> {
+								if (country.getPopulation() >= 30000000L)
+									return "higlypopulated";
+								else
+									return "lesspopulated";
+							})));
+			
+			System.out.println(countriesByContinentAndByPopulation);
+	}
+	@Test
+	public void maxPopulatedCountryInEachContinent(){
+		Map<String, Optional<Country>> countriesByPopulation =	countryStream.
+															collect(
+															groupingBy(Country::getContinent,
+															maxBy(comparingLong(Country::getPopulation))));
+	 
+			
+			//System.out.println(countriesByContinentAndByPopulation);
+	}
+
+}

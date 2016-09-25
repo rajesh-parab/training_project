@@ -1,0 +1,17 @@
+package com.java8.training;
+
+public class LambdaScope {
+	
+	int i;
+	
+	public void getDetails(){
+		int i=3;
+		
+	}
+
+	public static void main(String[] args) {
+	 
+
+	}
+
+}

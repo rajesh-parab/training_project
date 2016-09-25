@@ -1,0 +1,10 @@
+package com.java8.training;
+
+public class ConsumerExample {
+
+	public static void main(String[] args) {
+		 
+
+	}
+
+}

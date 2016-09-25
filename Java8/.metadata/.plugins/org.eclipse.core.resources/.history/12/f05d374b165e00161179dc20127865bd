@@ -1,0 +1,9 @@
+package com.java8.training;
+
+public class GenricNotsupported {
+
+	public static void main(String[] args) {
+		ListFactory a = ()-> { new ArrayList();};
+	}
+
+}

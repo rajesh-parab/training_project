@@ -1,0 +1,5 @@
+package com.java8.training;
+@FunctionalInterface
+public interface GenericAdd  {
+	<T> T add(T x,T y);
+}

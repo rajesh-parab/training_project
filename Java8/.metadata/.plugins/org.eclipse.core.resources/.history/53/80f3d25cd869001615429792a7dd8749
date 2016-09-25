@@ -1,0 +1,224 @@
+package com.rajesh.lambda.exercize;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.junit.Test;
+public class LambdaExercize {
+
+	@Test
+	public void reverseCountryName() {
+		 
+		List<Country> countries = Countries.getCountries();
+	 List<String> reverseCountries =	 countries.stream()
+				.map(c -> new StringBuilder(c.getName()).reverse().toString())
+				.collect(toList());
+	 
+	 System.out.println(reverseCountries);
+	 
+		 
+	}
+	@Test
+	public void upperCaseCountryName() {
+		 
+		List<Country> countries = Countries.getCountries();
+	 List<String> upperCaseCountries =	 countries.stream()
+				.map(c -> c.getName().toUpperCase())
+				.collect(toList());
+	 
+	 System.out.println(upperCaseCountries);
+	 
+		 
+	}
+	@Test
+	public void countryStartWithC() {
+		 
+		List<Country> countries = Countries.getCountries();
+	 List<String> upperCaseCountries =	 countries.stream()
+				.map(Country::getName)
+				.filter(s -> s.startsWith("C"))
+				.collect(toList());
+	 
+	 System.out.println(upperCaseCountries);
+	 
+		 
+	}
+	@Test
+	public void sumOfAllNameLength() {
+		 
+		List<Country> countries = Countries.getCountries();
+	 int sum =	 countries.stream()
+				.mapToInt(c -> c.getName().length())
+				.sum();
+				 
+	 
+	 System.out.println(sum);
+	 
+		 
+	}
+	@Test
+	public void longestCountryLength() {
+		 
+		List<Country> countries = Countries.getCountries();
+	 	Country c= countries.stream()
+				 .reduce((c1,c2)-> c1.getName().length() > c2.getName().length() ? c1 : c2).get();
+				 
+	 
+	 System.out.println(c);
+	 
+		 
+	}	
+	
+	@Test
+	public void sortCountryByPoulation() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+				.sorted(comparing(Country::getPopulation))
+				.forEach(System.out::println);; 
+		 
+	}
+	@Test
+	public void  groupCountryByContient() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+		        .collect(Collectors.groupingBy(Country::getContinent))
+		        .forEach((k,v) -> { System.out.println("Continent : "+ k); System.out.println(v); } );
+		 		 
+		 
+	}
+	@Test
+	public void  listAllFiles() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+		        .collect(Collectors.groupingBy(Country::getContinent))
+		        .forEach((k,v) -> { System.out.println("Continent : "+ k); System.out.println(v); } );
+		 		 
+		 
+	}
+	@Test
+	public void sortCountryByName() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+				.sorted(comparing(Country::getName))
+				.forEach(System.out::println);; 
+		 
+	}
+	@Test
+	public void sortCountryByNameGroupByContient() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+		 		.sorted(comparing(Country::getName))
+		 		.sorted(comparing(Country::getContinent))
+				.forEach(System.out::println);; 
+		 
+	}
+	
+	@Test
+	public void allCountriesBelowPopulation5milllionAndSortByName() {
+		 
+		List<Country> countries = Countries.getCountries();
+		List<Country> answer1 =countries.stream().
+				filter(c-> c.getPopulation() <=5000000L).
+				sorted(comparing(Country::getName)).
+				collect(toList()); 
+		System.out.println(answer1);
+	}
+
+	@Test
+	public void uniqueContinentWhereCountryWithPopulationBelow5Million() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+				.filter(c-> c.getPopulation() <=5000000L)
+				.map(Country::getContinent)
+				.distinct() //.collect(toSet())
+				.forEach(System.out::println);; 
+		 
+	}
+	@Test
+	public void allCountriesFromAsiaAndSortByName() {
+		 
+		List<Country> countries = Countries.getCountries();
+		 countries.stream()
+				.filter(c-> c.getContinent().equalsIgnoreCase("ASIA"))
+				.sorted(comparing(Country::getName))
+				.forEach(System.out::println);; 
+		 
+	}
+	@Test
+	public void isThereAnyCountryWithPoulation1Billion() {
+		 
+		List<Country> countries = Countries.getCountries();
+		if(countries.stream()
+				 .anyMatch(c-> c.getPopulation().equals(1000000000L))){
+			System.out.println(" There is a country with poulation 1 billion");
+			
+		}
+				 
+		 
+	}
+	@Test
+	public void printNameOfTheCountryWithPopulation1Billion() {
+		 
+		List<Country> countries = Countries.getCountries();
+		String country= countries.stream()
+		 		 .filter(c-> c.getPopulation().equals(1000000000L))
+				 .findAny().get().getName();
+		System.out.println(country);
+				 
+		 
+	}
+	@Test
+	public void printHigestAndLowestPopulation() {
+		 
+		List<Country> countries = Countries.getCountries();
+				Long max=	countries.stream()
+				   .map(Country::getPopulation)
+		 		  .reduce(Long::max).get();
+				 
+		System.out.println(max);
+		 
+		Long min=	countries.stream()
+		   .map(Country::getPopulation)
+ 		  .reduce(Long::max).get();
+		 
+System.out.println(min);
+				 
+		 
+	}
+	@Test
+	public void ttt() {
+		 
+		List<Country> countries = Countries.getCountries();
+				Long max=	countries.stream()
+				   .mapToLong(Country::getPopulation)
+		 		  .max().getAsLong();
+				 
+		System.out.println(max);
+	 
+				 
+		 
+	}
+	@Test
+	public void printAllCountryNameSeperatedByComma() {
+		 
+		List<Country> countries = Countries.getCountries();
+		String str=	 countries.stream()
+				   .map(Country::getName)
+		 		   .sorted()
+		 		   .collect(joining(","));
+		System.out.println(str);
+		 			 
+		 
+	}
+	
+}

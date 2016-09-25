@@ -1,0 +1,14 @@
+package com.training.java8;
+
+public class B extends A {
+ 
+	 public static void foo(){
+		  System.out.println("B");
+	  }
+	public static void main(String[] args) {
+		 B b = new B();
+		 b.foo();
+
+	}
+
+}

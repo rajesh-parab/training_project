@@ -1,0 +1,17 @@
+package com.java8.training;
+
+public class LambdaScope {
+	
+	int i=5;
+	
+	public void getDetails(){
+		int i=3;
+		System.out.println(i+ " instnace " +this.i);
+	}
+
+	public static void main(String[] args) {
+	 
+
+	}
+
+}
