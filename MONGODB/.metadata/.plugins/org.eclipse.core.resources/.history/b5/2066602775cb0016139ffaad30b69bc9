@@ -1,0 +1,23 @@
+package com.example;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class Mongo2Application {
+
+	 
+	@Bean
+	public MongoExample getBean(){
+		return new MongoExample();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(Mongo2Application.class, args);
+		 MongoExample example = getBean();
+		System.out.println("Collection deleted");
+
+	}
+}

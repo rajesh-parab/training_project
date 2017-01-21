@@ -1,0 +1,7 @@
+package com.example;
+
+public class ReadingListRepository  extends JpaRepository<Book, Long> {
+	List<Book> findByReader(String reader);
+
+
+}

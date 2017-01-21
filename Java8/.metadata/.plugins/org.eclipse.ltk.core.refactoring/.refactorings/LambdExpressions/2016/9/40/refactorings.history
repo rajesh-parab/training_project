@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;add&apos; in &apos;com.rajesh.lambda.functional.AdditionTests.main(...)&apos; to &apos;obj&apos;&#x0D;&#x0A;- Original project: &apos;LambdExpressions&apos;&#x0D;&#x0A;- Original element: &apos;com.rajesh.lambda.functional.AdditionTests.main(String[]).add&apos;&#x0D;&#x0A;- Renamed element: &apos;add&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;add&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.rajesh.lambda.functional{AdditionTests.java[AdditionTests~main~\[QString;@add!178!206!187!189!QAddition;!0!false" name="obj" references="true" stamp="1474954875658" version="1.0"/>
+</session>

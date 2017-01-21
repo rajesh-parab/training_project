@@ -1,0 +1,22 @@
+package com.example;
+
+public class Book {
+	@Id
+	private String id;
+	private String title;
+	private String author;
+	private int price;
+	private String type;
+
+	@Override
+	public String toString() {
+		return "Book{" + "id=" + id + ", title=" + title + ", author=" + author + ", price=" + price + "}";
+	}
+
+	public Book(String title, String author, String type, int price) {
+		this.title = title;
+		this.author = author;
+		this.price = price;
+		this.type = type;
+	}
+}

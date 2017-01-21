@@ -1,0 +1,36 @@
+package com.rajesh.lambda.functional;
+
+public class AdditionTests {
+ 
+	
+	public static void main(String[] args) {
+		 
+		 Addition obj =  ( x,  y) ->    x + y ;  // (x,y)-> x + y;
+		 
+		 System.out.println(obj.add(30, 20));
+		 
+		 
+		 
+		 System.out.println(lambdaMethod((x,y)-> x + y));
+		 System.out.println(lambdaMethod((x,y)-> x + y +10));
+		 System.out.println(lambdaMethod(obj));
+		 
+		 String str= "Rajesh";
+		lambdaMethod2(str);
+
+	}
+	public int add(int x,int y){
+		return x+y;
+	}
+   public static int lambdaMethod(Addition arg){
+	   return arg.add(10, 20);
+	  
+
+   }
+   public static void lambdaMethod2(String a){
+	   System.out.println(a.length());
+	  
+	  
+
+   }
+}

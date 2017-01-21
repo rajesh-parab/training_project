@@ -1,0 +1,29 @@
+package com.example;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+@SpringBootApplication
+@EnableMongoRepositories 
+public class Mongo2Application {
+
+	@Autowired
+	private static BookRepository repository;
+	 
+	@Bean
+	public static MongoExample getBean(){
+		return new MongoExample();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(Mongo2Application.class, args);
+		 MongoExample example = getBean();
+		 example.setRepository(repository);
+		 example.delete();
+		System.out.println("Collection deleted");
+
+	}
+}

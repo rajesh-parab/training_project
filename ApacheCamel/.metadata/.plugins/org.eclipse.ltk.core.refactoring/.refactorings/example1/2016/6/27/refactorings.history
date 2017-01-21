@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;camelinaction&apos; to &apos;com.camel.training&apos;&#x0D;&#x0A;- Original project: &apos;example1&apos;&#x0D;&#x0A;- Original element: &apos;example1/src/main/java/camelinaction&apos;&#x0D;&#x0A;- Renamed element: &apos;example1/src/main/java/com.camel.training&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update fully qualified names in &apos;*&apos; files&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;camelinaction&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;camelinaction" name="com.camel.training" patterns="*" qualified="true" references="true" stamp="1467104988027" textual="true" version="1.0"/>
+</session>

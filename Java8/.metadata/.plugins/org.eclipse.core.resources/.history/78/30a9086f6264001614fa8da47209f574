@@ -1,6 +1,0 @@
-package com.java8.training;
-
-@FunctionalInterface
-public interface MyCompose extends Compose {
-  
-}
